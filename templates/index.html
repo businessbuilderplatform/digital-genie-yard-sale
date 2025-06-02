@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yard Sale - Home</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 3.2rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #34495e;
+      margin: 0.5rem 0 1rem 0;
+    }
+
+    .carousel {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #555;
+      height: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      margin: 0 1rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #fff;
+      background-color: #2980b9;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      background-color: #3498db;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Yard Sale</h1>
+  <p class="subtitle">Buy, sell, and discover unique items in your local community.</p>
+  <p class="subtitle">Buy and sell new and used items easily.</p>
+
+  <div class="carousel" id="carousel"></div>
+
+  <div class="nav-links">
+    <a href="/browse">Browse Listings</a>
+    <a href="/signup">Create Account</a>
+  </div>
+
+  <script>
+    const taglines = [
+      "Shop and advertise items worldwide",
+      "Buy and sell new and used items easily",
+      "Sell, auction, trade, purchase, or negotiate. Your choice."
+    ];
+    let current = 0;
+
+    function rotateTaglines() {
+      const carousel = document.getElementById('carousel');
+      carousel.textContent = taglines[current];
+      current = (current + 1) % taglines.length;
+    }
+
+    rotateTaglines();
+    setInterval(rotateTaglines, 3000);
+  </script>
+</body>
+</html>

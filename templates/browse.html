@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browse Yard Sale Items</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .browse-container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 32px rgba(60, 72, 88, 0.13);
+      padding: 32px 24px;
+    }
+    .items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 28px;
+    }
+    .item-card {
+      background: #f9fafb;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+      padding: 18px 14px 14px 14px;
+      text-align: center;
+      transition: box-shadow 0.2s;
+    }
+    .item-card img {
+      width: 100%;
+      max-width: 180px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      background: #e0e7ff;
+    }
+    .item-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1.1rem;
+      color: #2d3748;
+    }
+    .item-card p {
+      margin: 0 0 8px 0;
+      color: #475569;
+      font-size: 0.98rem;
+    }
+    .item-card .price {
+      font-weight: bold;
+      color: #4f46e5;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="browse-container">
+    <h2 style="text-align:center;">Browse Yard Sale Items</h2>
+    <div class="items-grid">
+      {% for item in items %}
+      <div class="item-card">
+        <img src="/static/images/{{ item.image_filename }}" alt="Item Image" />
+        <h3>{{ item.item_name }}</h3>
+        <p>{{ item.description }}</p>
+        <p class="price">${{ item.price }}</p>
+      </div>
+      {% endfor %}
+      {% if items|length == 0 %}
+      <p style="grid-column: 1 / -1; text-align:center;">No items listed yet.</p>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>

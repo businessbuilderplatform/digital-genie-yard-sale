@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Yard Sale Options</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    body.personal-body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .personal-container {
+      background: #fff;
+      max-width: 440px;
+      margin: 56px auto;
+      padding: 36px 40px 32px 40px;
+      border-radius: 18px;
+      box-shadow: 0 8px 36px rgba(60, 72, 88, 0.15);
+    }
+    .personal-container h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 22px;
+      color: #2d3748;
+      letter-spacing: 1px;
+    }
+    .personal-container label {
+      display: block;
+      margin-top: 18px;
+      margin-bottom: 7px;
+      font-weight: 500;
+      color: #374151;
+    }
+    .personal-container select,
+    .personal-container input[type="number"] {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      background: #f9fafb;
+      transition: border 0.2s;
+    }
+    .personal-container select:focus,
+    .personal-container input[type="number"]:focus {
+      border-color: #6366f1;
+      outline: none;
+      background: #fff;
+    }
+    .options-group {
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+    .options-group label {
+      display: inline-block;
+      margin-right: 18px;
+      font-weight: 400;
+      color: #475569;
+    }
+    .shipping-group {
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+    .shipping-group label {
+      display: inline-block;
+      margin-right: 18px;
+      font-weight: 400;
+      color: #475569;
+    }
+    .personal-container button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 22px;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+    }
+    .personal-container button[type="submit"]:hover {
+      background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
+    }
+    .note {
+      background: #f1f5f9;
+      border-left: 4px solid #6366f1;
+      padding: 12px 16px;
+      margin: 18px 0 10px 0;
+      border-radius: 8px;
+      font-size: 0.97rem;
+      color: #334155;
+    }
+  </style>
+</head>
+<body class="personal-body">
+  <div class="personal-container">
+    <h2>Personal Yard Sale Options</h2>
+    <div class="note">
+      <b>Note:</b> A personal yard sale can only run for a maximum of 4 weeks.
+    </div>
+    <form action="/personaloption" method="post" autocomplete="off">
+      <!-- Hidden email field -->
+      <input type="hidden" name="email" value="{{ email }}">
+
+      <label for="duration">How long do you want your yard sale to run online?</label>
+      <select id="duration" name="duration" required>
+        <option value="">-- Select Duration --</option>
+        <option value="1">1 week</option>
+        <option value="2">2 weeks</option>
+        <option value="3">3 weeks</option>
+        <option value="4">4 weeks (max)</option>
+      </select>
+
+      <label>Where do you want to run your yard sale?</label>
+      <div class="options-group">
+        <input type="radio" id="local" name="sale_area" value="Local" required />
+        <label for="local">Locally</label>
+        <input type="radio" id="radius" name="sale_area" value="Radius" />
+        <label for="radius">Specific Radius</label>
+        <input type="radio" id="global" name="sale_area" value="Global" />
+        <label for="global">Globally</label>
+      </div>
+      <div id="radius-input" style="display:none;">
+        <label for="miles">Specify radius in miles:</label>
+        <select id="miles" name="miles">
+          <option value="">-- Select Miles --</option>
+          <option value="5">5 miles</option>
+          <option value="10">10 miles</option>
+          <option value="25">25 miles</option>
+          <option value="50">50 miles</option>
+          <option value="100">100 miles</option>
+          <option value="250">250 miles</option>
+          <option value="500">500 miles</option>
+        </select>
+      </div>
+
+      <label>Shipping Options</label>
+      <div class="shipping-group">
+        <input type="radio" id="ship" name="shipping" value="Ship" required />
+        <label for="ship">Willing to ship items (purchaser pays shipping)</label><br>
+        <input type="radio" id="pickup" name="shipping" value="Pickup" required />
+        <label for="pickup">Purchaser must pick up items in person</label>
+      </div>
+
+      <button type="submit">Complete Setup</button>
+    </form>
+  </div>
+  <script>
+    // Show/hide radius input based on selection
+    document.querySelectorAll('input[name="sale_area"]').forEach(function(elem) {
+      elem.addEventListener('change', function() {
+        document.getElementById('radius-input').style.display =
+          document.getElementById('radius').checked ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>

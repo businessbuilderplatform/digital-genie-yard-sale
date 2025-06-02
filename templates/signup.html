@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Account - Yard Sale</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <style>
+    body.signup-body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+    .signup-container {
+      background: #fff;
+      max-width: 420px;
+      margin: 48px auto;
+      padding: 32px 36px 28px 36px;
+      border-radius: 16px;
+      box-shadow: 0 6px 32px rgba(60, 72, 88, 0.13);
+    }
+    .signup-container h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      color: #2d3748;
+      letter-spacing: 1px;
+    }
+    .signup-container label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: #374151;
+    }
+    .signup-container input[type="text"],
+    .signup-container input[type="email"],
+    .signup-container input[type="tel"],
+    .signup-container select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 4px;
+      background: #f9fafb;
+      transition: border 0.2s;
+    }
+    .signup-container input:focus,
+    .signup-container select:focus {
+      border-color: #6366f1;
+      outline: none;
+      background: #fff;
+    }
+    .membership-info {
+      background: #f1f5f9;
+      border-left: 4px solid #6366f1;
+      padding: 14px 18px;
+      margin: 22px 0 18px 0;
+      border-radius: 8px;
+      font-size: 0.98rem;
+      color: #334155;
+    }
+    .account-type {
+      margin-top: 10px;
+      margin-bottom: 18px;
+    }
+    .account-type label {
+      display: inline;
+      font-weight: 400;
+      color: #475569;
+      margin-left: 6px;
+      margin-bottom: 0;
+    }
+    .account-type input[type="radio"] {
+      margin-right: 4px;
+      accent-color: #6366f1;
+    }
+    .business-link {
+      color: #4f46e5;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 500;
+      margin-left: 4px;
+    }
+    .signup-container button[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 18px;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+    }
+    .signup-container button[type="submit"]:hover {
+      background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
+    }
+  </style>
+</head>
+<body class="signup-body">
+  <div class="signup-container">
+    <h1>Create Your Yard Sale Account</h1>
+    <form action="/signup" method="post" autocomplete="off">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="address">Home Address</label>
+      <input type="text" id="address" name="address" required />
+
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" required />
+
+      <label for="payment">Preferred Payment Method</label>
+      <select id="payment" name="payment" required>
+        <option value="">-- Select --</option>
+        <option value="Visa">Visa</option>
+        <option value="Mastercard">Mastercard</option>
+        <option value="Cash App">Cash App</option>
+        <option value="PayPal">PayPal</option>
+        <option value="Zelle">Zelle</option>
+        <option value="Venmo">Venmo</option>
+        <option value="Bank Card">Bank Card</option>
+      </select>
+
+      <div class="membership-info">
+        <strong>Membership Options:</strong><br>
+        <ul style="margin: 8px 0 0 18px; padding: 0;">
+          <li>
+            <b>Personal yard sale membership</b> will retain <b>10% of the total sale amount</b>. 
+            Users can list as many items in their yard sale as they choose.
+          </li>
+          <li>
+            <b>Business storefront memberships</b> will be <b>custom priced per user features</b>.
+            Click on the <span class="business-link" onclick="window.location.href='/business-membership'">business membership link</span> to choose your options and retain pricing.
+          </li>
+        </ul>
+      </div>
+
+      <label>Account Type</label>
+      <div class="account-type">
+        <input type="radio" id="personal" name="account_type" value="Personal Seller" required />
+        <label for="personal">Personal Yard Sale Membership</label><br />
+        <input type="radio" id="enterprise" name="account_type" value="Enterprise Seller" required />
+        <label for="enterprise">Business Storefront Membership</label>
+      </div>
+
+      <button type="submit">Create Account</button>
+    </form>
+  </div>
+</body>
+</html>
