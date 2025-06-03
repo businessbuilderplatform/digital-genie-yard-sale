@@ -8,64 +8,118 @@
     body {
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #fdfcfb, #e2d1c3);
+      min-height: 100vh;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #333;
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+                  url('https://images.pexels.com/photos/5872361/pexels-photo-5872361.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      min-height: 100vh;
+      padding: 2rem;
       text-align: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .content {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+      max-width: 800px;
+      width: 90%;
     }
 
     h1 {
-      font-size: 3.2rem;
+      font-size: 3.5rem;
       margin-bottom: 0.5rem;
-      color: #2c3e50;
+      background: linear-gradient(45deg, #2c3e50, #3498db);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     }
 
-    p.subtitle {
-      font-size: 1.2rem;
+    .subtitle {
+      font-size: 1.3rem;
       color: #34495e;
-      margin: 0.5rem 0 1rem 0;
+      margin: 1rem 0;
+      line-height: 1.6;
     }
 
     .carousel {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-style: italic;
       color: #555;
       height: 1.5rem;
-      margin-bottom: 2rem;
+      margin: 2rem 0;
+      min-height: 24px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
 
     .nav-links a {
       display: inline-block;
-      margin: 0 1rem;
-      padding: 0.6rem 1.2rem;
-      font-size: 1rem;
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
       text-decoration: none;
       color: #fff;
-      background-color: #2980b9;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      background: linear-gradient(45deg, #2980b9, #3498db);
+      border-radius: 50px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 15px rgba(41, 128, 185, 0.2);
     }
 
     .nav-links a:hover {
-      background-color: #3498db;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(41, 128, 185, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .content {
+        padding: 2rem;
+      }
+      
+      .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .nav-links a {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Welcome to Yard Sale</h1>
-  <p class="subtitle">Buy, sell, and discover unique items in your local community.</p>
-  <p class="subtitle">Buy and sell new and used items easily.</p>
+  <div class="container">
+    <div class="content">
+      <h1>Welcome to Yard Sale</h1>
+      <p class="subtitle">Buy, sell, and discover unique items in your local community.</p>
+      <p class="subtitle">Turn your treasures into opportunities.</p>
 
-  <div class="carousel" id="carousel"></div>
+      <div class="carousel" id="carousel"></div>
 
-  <div class="nav-links">
-    <a href="/browse">Browse Listings</a>
-    <a href="/signup">Create Account</a>
+      <div class="nav-links">
+        <a href="/browse">Browse Listings</a>
+        <a href="/signup">Create Account</a>
+      </div>
+    </div>
   </div>
 
   <script>
