@@ -1,0 +1,16 @@
+<div class="browse-container">
+  <h2 style="text-align:center;">Browse Yard Sale Items</h2>
+  <div class="items-grid">
+    {{#each items}}
+    <div class="item-card">
+      <img src="/static/images/{{this.image_filename}}" alt="Item Image" />
+      <h3>{{this.item_name}}</h3>
+      <p>{{this.description}}</p>
+      <p class="price">${{this.price}}</p>
+    </div>
+    {{/each}}
+    {{#unless items.length}}
+    <p style="grid-column: 1 / -1; text-align:center;">No items listed yet.</p>
+    {{/unless}}
+  </div>
+</div>

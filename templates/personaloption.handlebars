@@ -1,0 +1,60 @@
+<div class="personal-container">
+  <h2>Personal Yard Sale Options</h2>
+  <div class="note">
+    <b>Note:</b> A personal yard sale can only run for a maximum of 4 weeks.
+  </div>
+  <form action="/personaloption" method="post" autocomplete="off">
+    <input type="hidden" name="email" value="{{email}}">
+
+    <label for="duration">How long do you want your yard sale to run online?</label>
+    <select id="duration" name="duration" required>
+      <option value="">-- Select Duration --</option>
+      <option value="1">1 week</option>
+      <option value="2">2 weeks</option>
+      <option value="3">3 weeks</option>
+      <option value="4">4 weeks (max)</option>
+    </select>
+
+    <label>Where do you want to run your yard sale?</label>
+    <div class="options-group">
+      <input type="radio" id="local" name="sale_area" value="Local" required />
+      <label for="local">Locally</label>
+      <input type="radio" id="radius" name="sale_area" value="Radius" />
+      <label for="radius">Specific Radius</label>
+      <input type="radio" id="global" name="sale_area" value="Global" />
+      <label for="global">Globally</label>
+    </div>
+    <div id="radius-input" style="display:none;">
+      <label for="miles">Specify radius in miles:</label>
+      <select id="miles" name="miles">
+        <option value="">-- Select Miles --</option>
+        <option value="5">5 miles</option>
+        <option value="10">10 miles</option>
+        <option value="25">25 miles</option>
+        <option value="50">50 miles</option>
+        <option value="100">100 miles</option>
+        <option value="250">250 miles</option>
+        <option value="500">500 miles</option>
+      </select>
+    </div>
+
+    <label>Shipping Options</label>
+    <div class="shipping-group">
+      <input type="radio" id="ship" name="shipping" value="Ship" required />
+      <label for="ship">Willing to ship items (purchaser pays shipping)</label><br>
+      <input type="radio" id="pickup" name="shipping" value="Pickup" required />
+      <label for="pickup">Purchaser must pick up items in person</label>
+    </div>
+
+    <button type="submit">Complete Setup</button>
+  </form>
+</div>
+
+<script>
+  document.querySelectorAll('input[name="sale_area"]').forEach(function(elem) {
+    elem.addEventListener('change', function() {
+      document.getElementById('radius-input').style.display =
+        document.getElementById('radius').checked ? 'block' : 'none';
+    });
+  });
+</script>

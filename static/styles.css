@@ -1,9 +1,15 @@
 /* Universal styles */
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to right, #f2f2f2, #d9e4f5);
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
+              url('https://images.pexels.com/photos/5872361/pexels-photo-5872361.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 a {
@@ -11,70 +17,274 @@ a {
   color: #0047ab;
 }
 
-/* Homepage & signup shared */
-.center-container {
+/* Homepage styles */
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  padding: 50px;
-}
-
-/* Signup specific */
-.signup-body {
-  display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.signup-container {
-  background-color: white;
-  padding: 30px 40px;
-  border-radius: 10px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 400px;
-}
-
-.signup-container h1 {
+  min-height: 100vh;
+  padding: 2rem;
   text-align: center;
-  color: #2c3e50;
-  margin-bottom: 25px;
+  backdrop-filter: blur(5px);
 }
 
-.signup-container form {
+.content {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+  max-width: 800px;
+  width: 90%;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  color: #34495e;
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+
+.carousel {
+  font-size: 1.2rem;
+  font-style: italic;
+  color: #555;
+  height: 1.5rem;
+  margin: 2rem 0;
+  min-height: 24px;
+}
+
+.nav-links {
   display: flex;
-  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-.signup-container label {
-  margin-top: 12px;
+.nav-links a {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(45deg, #2980b9, #3498db);
+  border-radius: 50px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(41, 128, 185, 0.2);
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(41, 128, 185, 0.3);
+}
+
+/* Browse page styles */
+.browse-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 32px rgba(60, 72, 88, 0.13);
+  padding: 32px 24px;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.item-card {
+  background: #f9fafb;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  padding: 18px 14px 14px 14px;
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+.item-card img {
+  width: 100%;
+  max-width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background: #e0e7ff;
+}
+
+.item-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  color: #2d3748;
+}
+
+.item-card p {
+  margin: 0 0 8px 0;
+  color: #475569;
+  font-size: 0.98rem;
+}
+
+.item-card .price {
   font-weight: bold;
+  color: #4f46e5;
+  font-size: 1.1rem;
+  margin-bottom: 0;
+}
+
+/* Signup & Personal Option styles */
+.signup-container,
+.personal-container,
+.additem-container {
+  background: #fff;
+  max-width: 440px;
+  margin: 56px auto;
+  padding: 36px 40px 32px 40px;
+  border-radius: 18px;
+  box-shadow: 0 8px 36px rgba(60, 72, 88, 0.15);
+}
+
+.signup-container h1,
+.personal-container h2,
+.additem-container h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 22px;
+  color: #2d3748;
+  letter-spacing: 1px;
+}
+
+.signup-container label,
+.personal-container label,
+.additem-container label {
+  display: block;
+  margin-top: 18px;
+  margin-bottom: 7px;
+  font-weight: 500;
+  color: #374151;
 }
 
 .signup-container input,
-.signup-container select {
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.signup-container select,
+.personal-container input,
+.personal-container select,
+.additem-container input,
+.additem-container select,
+.additem-container textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 4px;
+  background: #f9fafb;
+  transition: border 0.2s;
 }
 
-.account-type {
+.signup-container input:focus,
+.signup-container select:focus,
+.personal-container input:focus,
+.personal-container select:focus,
+.additem-container input:focus,
+.additem-container select:focus,
+.additem-container textarea:focus {
+  border-color: #6366f1;
+  outline: none;
+  background: #fff;
+}
+
+.membership-info,
+.note {
+  background: #f1f5f9;
+  border-left: 4px solid #6366f1;
+  padding: 14px 18px;
+  margin: 22px 0 18px 0;
+  border-radius: 8px;
+  font-size: 0.98rem;
+  color: #334155;
+}
+
+.account-type,
+.options-group,
+.shipping-group {
   margin-top: 10px;
+  margin-bottom: 18px;
 }
 
-.signup-container button {
-  margin-top: 20px;
-  padding: 12px;
-  background-color: #2c89d9;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-weight: bold;
+.account-type label,
+.options-group label,
+.shipping-group label {
+  display: inline;
+  font-weight: 400;
+  color: #475569;
+  margin-left: 6px;
+  margin-bottom: 0;
+}
+
+.account-type input[type="radio"],
+.options-group input[type="radio"],
+.shipping-group input[type="radio"] {
+  margin-right: 4px;
+  accent-color: #6366f1;
+}
+
+.business-link {
+  color: #4f46e5;
+  text-decoration: underline;
   cursor: pointer;
+  font-weight: 500;
+  margin-left: 4px;
 }
 
-.signup-container button:hover {
-  background-color: #1b6dbf;
+button[type="submit"] {
+  width: 100%;
+  background: linear-gradient(90deg, #6366f1 0%, #818cf8 100%);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 22px;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+}
+
+button[type="submit"]:hover {
+  background: linear-gradient(90deg, #4f46e5 0%, #6366f1 100%);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  .content {
+    padding: 2rem;
+  }
+  
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-links a {
+    width: 100%;
+  }
+  
+  .signup-container,
+  .personal-container,
+  .additem-container {
+    margin: 20px auto;
+    padding: 24px;
+  }
 }
